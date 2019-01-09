@@ -4,7 +4,7 @@ import './Todo.css';
 
 function Todo(props) {
   return (
-    <h1 className="todo">-{props.todo.task}</h1>
+    <h1 onClick={_ => props.completeTodo(props.myID)}>-{props.todo.task}</h1>
   )
 }
 

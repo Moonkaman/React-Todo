@@ -30,13 +30,50 @@ class App extends React.Component {
     })
   }
 
+  addTodo = e => {
+    e.preventDefault();
+
+    this.setState({
+      todos: [...this.state.todos, {
+        task: this.state.todoInputText,
+        id: this.getID(),
+        completed: false
+      }],
+      todoInputText: ''
+    });
+  }
+
+  getID() {
+    let newID = '';
+    for(let i=0; i<13; i++) {
+      newID += String(Math.floor(Math.random()*10));
+    }
+    return Number(newID);
+  }
+
+  completeTodo = id => {
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if(id === todo.id) {
+          return todo.completed === false ? {...todo, completed: true} : {...todo, completed: false}
+        } else {
+          return todo;
+        }
+      })
+    })
+  }
+
   render() {
     return (
       <div>
-        <TodoList todos={this.state.todos} />
+        <TodoList 
+        todos={this.state.todos}
+        completeTodo={this.completeTodo}
+        />
         <TodoForm 
         todoInputText={this.state.todoInputText}
-        handleInput={this.handleInput} 
+        handleInput={this.handleInput}
+        addTodo={this.addTodo} 
         />
       </div>
     );
