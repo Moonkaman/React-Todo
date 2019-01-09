@@ -63,6 +63,13 @@ class App extends React.Component {
     })
   }
 
+  removeCompleted = e => {
+    e.preventDefault();
+    this.setState({
+      todos: this.state.todos.filter(todo => todo.completed === false)
+    });
+  }
+
   render() {
     return (
       <div>
@@ -73,7 +80,8 @@ class App extends React.Component {
         <TodoForm 
         todoInputText={this.state.todoInputText}
         handleInput={this.handleInput}
-        addTodo={this.addTodo} 
+        addTodo={this.addTodo}
+        removeCompleted={this.removeCompleted} 
         />
       </div>
     );
