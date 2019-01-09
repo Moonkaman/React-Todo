@@ -77,6 +77,7 @@ class App extends React.Component {
     return (
       <div className="todo-list-cont">
         <h1 className="title">My Todo List</h1>
+        <div className="arrow-down"></div>
         <div className="main-cont">
           <TodoList 
           todos={this.state.todos}

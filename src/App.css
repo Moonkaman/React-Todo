@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
 * {
   box-sizing: border-box;
 }
@@ -14,12 +16,13 @@ body {
 .todo-list-cont {
   background: #ecf0f1;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   max-width: 500px;
   margin: 0 auto;
   border-radius: 4px;
   padding: 0px;
   overflow: hidden;
+  position: relative;
 }
 
 .todo-list-cont .title {
@@ -28,6 +31,18 @@ body {
   background: #2ecc71;
   color: white;
   font-weight: normal;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  
+  border-top: 12px solid #2ecc71;
+  position: absolute;
+  top: 63px;
+  left: 46%;
 }
 
 .todo-list-cont .main-cont {
