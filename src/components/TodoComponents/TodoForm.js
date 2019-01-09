@@ -5,7 +5,9 @@ import './Todo.css';
 function TodoForm(props) {
   return (
     <form>
-      <div>TodoForm</div>
+      <input value={props.todoInputText} type="text" onChange={props.handleInput} />
+      <button>Add Item</button>
+      <button>Clear Done</button>
     </form>
   )
 }

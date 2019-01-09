@@ -19,15 +19,25 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: todoData
+      todos: todoData,
+      todoInputText: ''
     }
+  }
+
+  handleInput = e => {
+    this.setState({
+      todoInputText: e.target.value
+    })
   }
 
   render() {
     return (
       <div>
         <TodoList todos={this.state.todos} />
-        <TodoForm />
+        <TodoForm 
+        todoInputText={this.state.todoInputText}
+        handleInput={this.handleInput} 
+        />
       </div>
     );
   }
