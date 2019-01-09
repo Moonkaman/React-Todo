@@ -76,16 +76,19 @@ class App extends React.Component {
   render() {
     return (
       <div className="todo-list-cont">
-        <TodoList 
-        todos={this.state.todos}
-        completeTodo={this.completeTodo}
-        />
-        <TodoForm 
-        todoInputText={this.state.todoInputText}
-        handleInput={this.handleInput}
-        addTodo={this.addTodo}
-        removeCompleted={this.removeCompleted} 
-        />
+        <h1 className="title">My Todo List</h1>
+        <div className="main-cont">
+          <TodoList 
+          todos={this.state.todos}
+          completeTodo={this.completeTodo}
+          />
+          <TodoForm 
+          todoInputText={this.state.todoInputText}
+          handleInput={this.handleInput}
+          addTodo={this.addTodo}
+          removeCompleted={this.removeCompleted} 
+          />
+        </div>
       </div>
     );
   }

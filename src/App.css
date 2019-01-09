@@ -18,5 +18,18 @@ body {
   max-width: 500px;
   margin: 0 auto;
   border-radius: 4px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.todo-list-cont .title {
+  margin: 0 0 10px 0;
+  padding: 10px 0 10px 0;
+  background: #2ecc71;
+  color: white;
+  font-weight: normal;
+}
+
+.todo-list-cont .main-cont {
   padding: 10px;
 }
