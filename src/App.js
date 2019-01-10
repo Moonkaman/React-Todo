@@ -1,9 +1,12 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
+import TodoSearch from './components/TodoComponents/TodoSearch';
 import Moment from 'moment';
+import TweenMax from 'gsap/TweenMax'
 
 import './App.css'
+import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
 
 const todoData = [
 {
@@ -26,7 +29,8 @@ class App extends React.Component {
     super();
     this.state = {
       todos: todoData,
-      todoInputText: ''
+      todoInputText: '',
+      searchOpen: false
     }
   }
 
@@ -74,10 +78,25 @@ class App extends React.Component {
     });
   }
 
+  toggleSearch = _ => {
+    console.log('click');
+    if(!this.state.searchOpen) {
+      this.setState({
+        searchOpen: !this.state.searchOpen
+      }, _ => TweenMax.to('.todo-search', .4, {height: 42})); 
+    } else {
+      this.setState({
+        searchOpen: !this.state.searchOpen
+      }, _=> TweenMax.to('.todo-search', .4, {height: 0}));
+    }
+  }
+
   render() {
     return (
       <div className="todo-list-cont">
+        <i className="fas fa-search search-btn" onClick={this.toggleSearch}></i>
         <h1 className="title">My Todo List</h1>
+        <TodoSearch />
         <div className="arrow-down"></div>
         <div className="main-cont">
           <TodoList 
