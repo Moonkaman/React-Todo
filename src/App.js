@@ -30,14 +30,21 @@ class App extends React.Component {
     this.state = {
       todos: todoData,
       todoInputText: '',
-      searchOpen: false
+      filteredTodos: [],
+      searchOpen: false,
+      searchText: ''
     }
   }
 
   handleInput = e => {
+    e.persist()
     this.setState({
-      todoInputText: e.target.value
-    })
+      [e.target.name]: e.target.value
+    }, _ => {
+      if(e.target.name === 'searchText') {
+        this.searchTodos();
+      }
+    });
   }
 
   addTodo = e => {
@@ -79,7 +86,6 @@ class App extends React.Component {
   }
 
   toggleSearch = _ => {
-    console.log('click');
     if(!this.state.searchOpen) {
       this.setState({
         searchOpen: !this.state.searchOpen
@@ -91,16 +97,25 @@ class App extends React.Component {
     }
   }
 
+  searchTodos = _ => {
+    this.setState({
+      filteredTodos: this.state.todos.filter(todo => todo.task.toLowerCase().includes(this.state.searchText.toLowerCase()))
+  })
+}
+
   render() {
     return (
       <div className="todo-list-cont">
         <i className="fas fa-search search-btn" onClick={this.toggleSearch}></i>
         <h1 className="title">My Todo List</h1>
-        <TodoSearch />
+        <TodoSearch 
+        searchText={this.state.searchText}
+        handleInput={this.handleInput}
+        />
         <div className="arrow-down"></div>
         <div className="main-cont">
           <TodoList 
-          todos={this.state.todos}
+          todos={this.state.searchText != '' ? this.state.filteredTodos : this.state.todos}
           completeTodo={this.completeTodo}
           />
           <TodoForm 
