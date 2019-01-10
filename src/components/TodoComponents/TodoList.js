@@ -6,7 +6,7 @@ import './Todo.css';
 function TodoList(props) {
   return (
     props.todos.map(todo => {
-      return <Todo todo={todo} key={todo.id} completeTodo={props.completeTodo} myID={todo.id} className={todo.completed === true ? 'todo-item completed' : 'todo-item'} />
+      return <Todo todo={todo} key={todo.id} date={todo.posted} completeTodo={props.completeTodo} myID={todo.id} className={todo.completed === true ? 'todo-item completed' : 'todo-item'} />
     })
   )
 }

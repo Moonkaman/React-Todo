@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
+import Moment from 'moment';
 
 import './App.css'
 
@@ -8,12 +9,14 @@ const todoData = [
 {
   task: 'Organize Garage',
   id: 1528817077286,
-  completed: false
+  completed: false,
+  posted: '10-20-2018 2:45pm'
 },
 {
   task: 'Bake Cookies',
   id: 1528817084358,
-  completed: false
+  completed: false,
+  posted: '6-05-2018 4:03pm'
 }
 ];
 
@@ -40,21 +43,19 @@ class App extends React.Component {
       todos: [...this.state.todos, {
         task: this.state.todoInputText,
         id: this.getID(),
-        completed: false
+        completed: false,
+        posted: Moment().format('M-D-YYYY h:mma')
       }],
       todoInputText: ''
     });
   }
 
   getID() {
-    let newID = '';
-    for(let i=0; i<13; i++) {
-      newID += String(Math.floor(Math.random()*10));
-    }
-    return Number(newID);
+    return Date.now();
   }
 
   completeTodo = id => {
+    console.log('click');
     this.setState({
       todos: this.state.todos.map(todo => {
         if(id === todo.id) {

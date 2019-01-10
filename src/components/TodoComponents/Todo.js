@@ -4,7 +4,11 @@ import './Todo.css';
 
 function Todo(props) {
   return (
-    <h1 className={props.className} onClick={_ => props.completeTodo(props.myID)}>{props.todo.task}</h1>
+    <div className={props.className} onClick={_ => props.completeTodo(props.myID)}>
+      <h1 className="todo-title">{props.todo.task}</h1>
+      <p className="date">{props.date}</p>
+    </div>
+    
   )
 }
 
