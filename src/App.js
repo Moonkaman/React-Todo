@@ -75,6 +75,8 @@ class App extends React.Component {
           return todo;
         }
       })
+    }, _ => {
+      this.searchTodos();
     })
   }
 
@@ -82,6 +84,8 @@ class App extends React.Component {
     e.preventDefault();
     this.setState({
       todos: this.state.todos.filter(todo => todo.completed === false)
+    }, _ => {
+      this.searchTodos();
     });
   }
 
